@@ -1,0 +1,65 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+
+public class Program
+   {
+      public void VinSolutions(string[] args)
+       {
+
+       }
+       public static void Main(string[] args)
+       {       
+      
+       string str;
+       Console.WriteLine("Enter your sentence:");
+       str = Console.ReadLine();
+         string[] sentence = Regex.Split(str, @"\W+");
+         List<string> newsentence = new List<string>();
+         StringBuilder builder = new StringBuilder();
+           foreach (string word in sentence)
+           {
+               newsentence.Add(word);
+
+               string newword = null;
+               if (word.Length > 1)
+               {
+                   int k = word.Length;
+                   int samecharcount = 0;
+                   int count = 0;
+
+                   for (int i = 1; i < k - 1; i++)
+                   {
+
+                       if (word.ElementAt(i) != word.ElementAt(i + 1))
+                       {
+
+                           count++;
+
+                       }
+                       else
+                       {
+                           samecharcount++;
+                       }
+                   }                  
+                       char firstChar = word[0];
+                       char lastChar = word[word.Length - 1];
+                       newword = String.Concat(firstChar, count.ToString(), lastChar);
+                       Console.Write(newword+" ");
+                }
+               else
+               {
+                       int distinctCount = 0;
+                       char firstChar = word[0];
+                       char lastChar = word[word.Length - 1];
+                       newword = String.Concat(firstChar, distinctCount.ToString());
+                       Console.Write(newword+" ");
+               }
+
+           }
+           
+       }
+   }
